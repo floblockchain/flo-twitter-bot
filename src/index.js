@@ -82,13 +82,11 @@ getJSON('http://network.flo.cash/ext/getaddress/F7Rr4zfGR7ZBR5ukSVdSkuKt5tuX5kmY
     for (let tx of response.last_txs) {
       if (tx.type == "vout") {
         // Get txcomment from address
-        console.log("Debug tx:", tx)
         getJSON('http://network.flo.cash/api/getrawtransaction?txid=' + tx.addresses + '&decrypt=1')
           .then(function(response) {
             if (!existsInDB("/donation/" + tx.addresses)) {
               // Add up amounts and make sure it's over 50
               let total = 0
-              console.log("Debug total:", total)
               for (let i = 0; i < response.vout.length; i++) {
                 for (let j = 0; j < response.vout[i].scriptPubKey.addresses.length; j++) {
                   if (response.vout[i].scriptPubKey.addresses[j] == "F7Rr4zfGR7ZBR5ukSVdSkuKt5tuX5kmYdY") total += response.vout[i].value 
