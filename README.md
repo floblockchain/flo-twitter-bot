@@ -1,5 +1,5 @@
 # FLO twitter bot
-![FLO](res/flobot1_small.jpg)
+![FLO](res/flobot5_small.jpg)
 https://twitter.com/flodatabot
 
 ## Install
